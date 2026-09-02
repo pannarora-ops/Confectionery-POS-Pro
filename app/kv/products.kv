@@ -1,0 +1,155 @@
+<ProductsScreen>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Product Master"
+
+        ScrollView:
+
+            MDBoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "15dp"
+                spacing: "15dp"
+
+                #################################################
+                # PRODUCT FORM
+                #################################################
+
+                MDGridLayout:
+                    id: form_grid
+                    cols: 2
+                    adaptive_height: True
+                    spacing: "10dp"
+
+                    MDTextField:
+                        id: barcode
+                        hint_text: "Barcode"
+
+                    MDTextField:
+                        id: pname
+                        hint_text: "Product Name"
+
+                    MDTextField:
+                        id: category
+                        hint_text: "Category"
+
+                    MDTextField:
+                        id: brand
+                        hint_text: "Brand"
+
+                    MDTextField:
+                        id: unit
+                        hint_text: "Unit"
+
+                    MDTextField:
+                        id: hsn
+                        hint_text: "HSN Code"
+
+                    MDTextField:
+                        id: gst
+                        hint_text: "GST %"
+                        input_filter: "float"
+
+                    MDTextField:
+                        id: purchase
+                        hint_text: "Purchase Price"
+                        input_filter: "float"
+
+                    MDTextField:
+                        id: sale
+                        hint_text: "Selling Price"
+                        input_filter: "float"
+
+                    MDTextField:
+                        id: mrp
+                        hint_text: "MRP"
+                        input_filter: "float"
+
+                    MDTextField:
+                        id: stock
+                        hint_text: "Opening Stock"
+                        input_filter: "float"
+
+                    MDTextField:
+                        id: minstock
+                        hint_text: "Minimum Stock"
+                        input_filter: "float"
+                                        #################################################
+                # BUTTONS
+                #################################################
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "10dp"
+
+                    MDRaisedButton:
+                        text: "SAVE"
+                        md_bg_color: app.theme_cls.primary_color
+                        on_release:
+                            root.save_product()
+
+                    MDRaisedButton:
+                        text: "CLEAR"
+                        on_release:
+                            root.clear_fields()
+
+                    MDRaisedButton:
+                        text: "BACK"
+                        on_release:
+                            app.root.current = "dashboard"
+
+                MDSeparator:
+                    height: "2dp"
+
+                #################################################
+                # SEARCH PRODUCT
+                #################################################
+
+                MDLabel:
+                    text: "Search Product"
+                    halign: "center"
+                    bold: True
+                    size_hint_y: None
+                    height: "35dp"
+
+                MDTextField:
+                    id: search
+                    hint_text: "Search by Barcode / Product Name"
+
+                MDBoxLayout:
+                    adaptive_height: True
+                    spacing: "10dp"
+
+                    MDRaisedButton:
+                        text: "SEARCH"
+                        on_release:
+                            root.search_product(search.text)
+
+                    MDRaisedButton:
+                        text: "SHOW ALL"
+                        on_release:
+                            search.text = ""
+                            root.load_products()
+
+                MDSeparator:
+                    height: "2dp"
+                                    #################################################
+                # PRODUCT LIST
+                #################################################
+
+                MDLabel:
+                    text: "Product List"
+                    halign: "center"
+                    bold: True
+                    size_hint_y: None
+                    height: "35dp"
+
+                MDBoxLayout:
+                    id: table_box
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: "450dp"

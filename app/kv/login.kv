@@ -1,0 +1,34 @@
+<LoginScreen>
+
+    MDBoxLayout:
+        orientation: "vertical"
+        spacing: "20dp"
+        padding: "40dp"
+
+        Widget:
+            size_hint_y: .2
+
+        MDLabel:
+            text: "🍬 Confectionery POS Pro"
+            halign: "center"
+            font_style: "H4"
+
+        MDTextField:
+            id: username
+            hint_text: "Username"
+            helper_text: "Enter your username"
+            helper_text_mode: "on_focus"
+
+        MDTextField:
+            id: password
+            hint_text: "Password"
+            password: True
+            helper_text: "Enter your password"
+            helper_text_mode: "on_focus"
+
+        MDRaisedButton:
+            text: "LOGIN"
+            pos_hint: {"center_x": .5}
+            on_release: root.login()
+
+        Widget:

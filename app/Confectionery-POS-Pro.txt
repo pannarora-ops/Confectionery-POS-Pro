@@ -1,0 +1,34 @@
+Confectionery-POS-Pro/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── database.py   ← यहाँ
+│   ├── config.py
+│   ├── login.py
+│   ├── dashboard.py
+│   ├── splash.py
+│   ├── models/
+│   ├── screens/
+│   ├── services/
+│   ├── utils/
+│   └── widgets/
+│
+├── database/
+│   └── shop.db       ← यह फ़ाइल अपने-आप बनेगी
+│
+├── assets/
+├── docs/
+├── tests/
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── run.py
+
+
+New-Item splash.py
+New-Item login.py
+New-Item dashboard.py
+New-Item products.py
+New-Item billing.py
+New-Item purchase.py

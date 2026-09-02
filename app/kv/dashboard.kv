@@ -1,0 +1,31 @@
+<DashboardScreen>
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Confectionery POS Pro"
+
+        MDGridLayout:
+            cols: 2
+            spacing: "15dp"
+            padding: "15dp"
+
+            MDRaisedButton:
+                text: "🧾 New Bill"
+
+            MDRaisedButton:
+                text: "📦 Products"
+                on_release: root.open_products()
+
+            MDRaisedButton:
+                text: "🛒 Purchase"
+
+            MDRaisedButton:
+                text: "👥 Customers"
+
+            MDRaisedButton:
+                text: "🚚 Suppliers"
+
+            MDRaisedButton:
+                text: "📊 Reports"
