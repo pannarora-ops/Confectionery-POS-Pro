@@ -1,21 +1,13 @@
 from kivy.clock import Clock
-from kivymd.uix.screen import MDScreen
-from kivymd.uix.label import MDLabel
+from kivy.uix.screenmanager import Screen
+from kivy.lang import Builder
+
+Builder.load_file("app/kv/splash.kv")
 
 
-class SplashScreen(MDScreen):
+class SplashScreen(Screen):
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-        self.add_widget(
-            MDLabel(
-                text="Confectionery POS Pro\nVersion 0.1",
-                halign="center",
-            )
-        )
-
-    def on_enter(self):
+    def on_enter(self, *args):
         Clock.schedule_once(self.goto_login, 2)
 
     def goto_login(self, dt):

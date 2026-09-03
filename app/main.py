@@ -1,45 +1,46 @@
-"""
-Confectionery POS Pro
-Main Application
-"""
-
-from kivy.lang import Builder
+from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 
-# Screens
+from app.config import (
+    APP_NAME,
+    APP_VERSION,
+    PRIMARY_PALETTE,
+    THEME_STYLE,
+    WINDOW_WIDTH,
+    WINDOW_HEIGHT,
+)
+
+from app.database import Database
+
+from app.screens.splash import SplashScreen
 from app.screens.login import LoginScreen
 from app.screens.dashboard import DashboardScreen
-from app.screens.products import ProductsScreen
 
 
-class ConfectioneryPOSApp(MDApp):
+class POSApp(MDApp):
 
     def build(self):
 
-        self.title = "Confectionery POS Pro"
+        self.title = f"{APP_NAME} v{APP_VERSION}"
 
-        # Theme
-        self.theme_cls.theme_style = "Light"
-        self.theme_cls.primary_palette = "Blue"
+        self.theme_cls.primary_palette = PRIMARY_PALETTE
+        self.theme_cls.theme_style = THEME_STYLE
 
-        # Load KV Files
-        Builder.load_file("app/kv/login.kv")
-        Builder.load_file("app/kv/dashboard.kv")
-        Builder.load_file("app/kv/products.kv")
+        Window.size = (WINDOW_WIDTH, WINDOW_HEIGHT)
+        Window.minimum_width = 1000
+        Window.minimum_height = 650
 
-        # Screen Manager
+        db = Database()
+        db.create_tables()
+        db.close()
+
         sm = ScreenManager()
 
-        # Register Screens
+        sm.add_widget(SplashScreen(name="splash"))
         sm.add_widget(LoginScreen(name="login"))
         sm.add_widget(DashboardScreen(name="dashboard"))
-        sm.add_widget(ProductsScreen(name="products"))
 
-        # Start Screen
-        sm.current = "dashboard"
+        sm.current = "splash"
+
         return sm
-
-
-if __name__ == "__main__":
-    ConfectioneryPOSApp().run()

@@ -1,7 +1,8 @@
-from kivymd.uix.screen import MDScreen
+from kivy.lang import Builder
+from kivy.uix.screenmanager import Screen
+
+Builder.load_file("app/kv/dashboard.kv")
 
 
-class DashboardScreen(MDScreen):
-
-    def open_products(self):
-        self.manager.current = "products"
+class DashboardScreen(Screen):
+    pass
